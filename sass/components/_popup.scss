@@ -10,6 +10,13 @@
   visibility: hidden;
   transition: all 0.3s;
 
+  @supports (-webkit-backdrop-filter: blur(10px)) or
+    (backdrop-filter: blur(10px)) {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
+
   &__content {
     @include absCenter;
 
@@ -20,7 +27,7 @@
     display: table;
     overflow: hidden;
     opacity: 0;
-    transform: transform(-50%, -50%) scale(0.25);
+    transform: translate(-50%, -50%) scale(0.25);
     transition: all 0.5s 0.2s;
   }
 
@@ -46,11 +53,11 @@
     margin-bottom: 4rem;
 
     -moz-column-count: 2;
-    -moz-column-gap: 4rem;
+    -moz-column-gap: 4rem; //1em = 14px;
     -moz-column-rule: 1px solid $color-grey-light-2;
 
     column-count: 2;
-    column-gap: 4rem;
+    column-gap: 4rem; //1em = 14px;
     column-rule: 1px solid $color-grey-light-2;
 
     -moz-hyphens: auto;
@@ -59,7 +66,7 @@
     hyphens: auto;
   }
 
-  //open states
+  //Open states
   &:target {
     opacity: 1;
     visibility: visible;
@@ -67,7 +74,7 @@
 
   &:target &__content {
     opacity: 1;
-    transform: transform(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 
   &__close {
